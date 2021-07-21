@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Province;
+use App\Http\Controllers\ProvinceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/province', [ProvinceController::class, 'index']);
+Route::post('/province', [ProvinceController::class, 'store']);
+Route::get('/province/{province_id:province_id}', [ProvinceController::class, 'show']);
+Route::put('/province/{id}', [ProvinceController::class, 'update']);
+Route::delete('/province/{id}', [ProvinceController::class, 'destroy']);
